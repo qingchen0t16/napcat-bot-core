@@ -19,6 +19,13 @@
       <Compile Update="NapcatBot.Group.cs">
         <DependentUpon>NapcatBot.cs</DependentUpon>
       </Compile>
+      <Compile Update="NapcatBot.User.cs">
+        <DependentUpon>NapcatBot.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\Contracts\" />
     </ItemGroup>
 
 </Project>

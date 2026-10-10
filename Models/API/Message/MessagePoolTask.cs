@@ -99,16 +99,10 @@ public class MessagePoolTask
     /// <param name="ct"></param>
     private async Task WatchTimeoutAsync(CancellationToken ct)
     {
-        try
-        {
-            await Task.Delay(TimeSpan.FromSeconds(Timeout), ct);
-            OnTimeout?.Invoke(this);
-            WaitTask.TrySetResult(this);
-            Bot.RemoveMessageTask(this);
-        }
-        catch (Exception)
-        {
-            return;
-        }
+        await Task.Delay(TimeSpan.FromSeconds(Timeout), ct);
+        OnTimeout?.Invoke(this);
+        WaitTask.TrySetResult(this);
+        Bot.RemoveMessageTask(this);
+        WaitTask.SetException(new Exception("Timeout, 超时"));
     }
 }
